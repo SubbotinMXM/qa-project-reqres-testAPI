@@ -1,6 +1,5 @@
 package api;
 
-import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -13,10 +12,10 @@ public class ReqresTest {
 
     @Test
     public void checkAvatarAndIdTest(){
+        Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
         List<UserData> users = given()
                 .when()
-                .contentType(ContentType.JSON)
-                .get(URL + "/api/users?page=2")
+                .get("/api/users?page=2")
                 .then().log().all()
                 .extract().body().jsonPath().getList("data", UserData.class);
 
