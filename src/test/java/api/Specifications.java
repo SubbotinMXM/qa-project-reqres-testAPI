@@ -25,4 +25,5 @@ public class Specifications {
         RestAssured.requestSpecification = request;
         RestAssured.responseSpecification = response;
     }
+
 }
